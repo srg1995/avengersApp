@@ -1,5 +1,3 @@
-// src/components/CharacterInput/CharacterInput.test.js
-
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CharactersContext } from "../../common/context/CharactersContextProvider";

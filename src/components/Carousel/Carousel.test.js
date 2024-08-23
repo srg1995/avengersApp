@@ -1,10 +1,8 @@
-// Carousel.test.js
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Carousel from "./Carousel";
 
-// Datos de prueba
 const mockCarouselData = [
   { image: "https://example.com/comic1.jpg", name: "Comic 1" },
   { image: "https://example.com/comic2.jpg", name: "Comic 2" },

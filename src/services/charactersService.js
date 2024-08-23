@@ -8,9 +8,9 @@ const hash = md5(ts + privateKey + publicKey);
 export const fetchCharacters = async (nameStartsWith) => {
   let url;
   if (nameStartsWith) {
-    url = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=50&nameStartsWith=${nameStartsWith}`;
+    url = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=50&nameStartsWith=${nameStartsWith}`;
   } else {
-    url = `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=50`;
+    url = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=50`;
   }
   try {
     const response = await fetch(url);
@@ -25,7 +25,8 @@ export const fetchCharacters = async (nameStartsWith) => {
 };
 
 export const fetchComicImage = async (path) => {
-  const url = `${path}?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=20`;
+  const urlPath = path.replace(/^http:\/\//i, "https://");
+  const url = `${urlPath}?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=20`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
