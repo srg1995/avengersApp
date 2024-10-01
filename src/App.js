@@ -1,29 +1,30 @@
 import "./App.css";
-import React, { useContext } from "react";
+import React, { lazy, Suspense, useContext } from "react";
 import Layout from "./components/Layout";
 import { CharactersContext } from "./common/context/CharactersContextProvider";
 import CharacterInput from "./components/CharacterInput/CharacterInput";
-import CardsInfo from "./components/CardsInfo/CardsInfo";
+
+import CardsInfoSkeleton from "./components/CardsInfo/CardsInfoSkeleton";
+
+const CardsInfo = lazy(() => import("./components/CardsInfo/CardsInfo"));
 
 const App = () => {
-  const { charactersData, isShowLiked } = useContext(CharactersContext);
+  const { isShowLiked } = useContext(CharactersContext);
 
   return (
     <Layout>
-      {!charactersData.length ? (
-        <div className="spinner"></div>
-      ) : (
-        <>
-          <article className="characters">
-            {isShowLiked && <h1>FAVORITES</h1>}
-            <CharacterInput />
-          </article>
+      <>
+        <article className="characters">
+          {isShowLiked && <h1>FAVORITES</h1>}
+          <CharacterInput />
+        </article>
 
-          <article className="characters">
+        <article className="characters">
+          <Suspense fallback={<CardsInfoSkeleton />}>
             <CardsInfo />
-          </article>
-        </>
-      )}
+          </Suspense>
+        </article>
+      </>
     </Layout>
   );
 };

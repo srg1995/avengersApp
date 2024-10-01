@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { charactersAdapter } from "../../services/adapters/charactersAdapter";
@@ -7,19 +7,19 @@ import { fetchCharacters } from "../../services/charactersService";
 export const CharactersContext = createContext();
 
 export default function CharactersContextProvider({ children }) {
-  const [charactersData, setCharactersData] = useState({});
+  const [charactersData, setCharactersData] = useState(null);
   const [isShowLiked, setIsShowLiked] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (location.pathname === "/") {
       fetchCharacters().then((result) => {
         setCharactersData(charactersAdapter(result));
       });
     }
-  }, [location.pathname]);
+  }, [location.pathname]);*/
 
   return (
     <CharactersContext.Provider

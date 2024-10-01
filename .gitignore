@@ -21,6 +21,7 @@ log.txt
 .versions/
 node_modules/
 $RECYCLE.BIN/
+dist/
 
 .DS_Store
 Thumbs.db
@@ -31,3 +32,4 @@ eslint-report.json
 .scannerwork/
 
 .npmrc
+.gitignore

@@ -28,7 +28,7 @@ export default function Layout({ children }) {
           }}
         >
           <HeartIcon />
-          <p>{charactersData.activeCounter}</p>
+          <p>{charactersData?.activeCounter}</p>
         </button>
       </header>
       <section>{children}</section>

@@ -1,4 +1,5 @@
 export const charactersAdapter = (charactersRecived) => {
+  console.log(charactersRecived);
   const newCharacter = {
     length: charactersRecived?.count,
     activeCounter: 0,
